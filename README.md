@@ -1,12 +1,15 @@
 # lemon-element-vue
 
-> A ui project for vue
+> A vue components base on element
 
 ## use Setup
 
-``` bash
-# install 
-npm install lemon-element-vue --save
+
+```js
+// 引入组件包 package.js 
+"dependencies": {
+    "@ELBOWB/lemon-element": "git+https://github.com/ELBOWB/lemon-element.git",
+}
 ```
 ```js
 // use in main.js
