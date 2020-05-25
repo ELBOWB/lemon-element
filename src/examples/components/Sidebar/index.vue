@@ -46,7 +46,7 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      font-weight: 400;
+      font-weight: 600;
       padding: 10px 0;
       cursor: pointer;
     }

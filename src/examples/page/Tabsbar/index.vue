@@ -1,5 +1,6 @@
 <template>
   <div class="Tabsbar">
+    <div class="example-title">基本标签页</div>
     <le-Tabsbar :tabList="tabList" v-model="tabStatus"  @handlerChange="getList" />
     <Attribute title='Tabsbar Attribute' :dataSource="AttributeFields" />
   </div>

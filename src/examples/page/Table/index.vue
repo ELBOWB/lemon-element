@@ -10,7 +10,7 @@
     </le-table>
     <!-- <TableMd /> -->
     <div class="example-title">带操作的表格</div>
-    <le-table 
+    <le-Table 
       :loading="loading"
       :columns="tableHeader"
       :dataSource="tableData"
@@ -20,10 +20,10 @@
       <template slot="operationColumn" slot-scope="{row}">
         <el-button type='primary' @click="change(row)">点击</el-button>
       </template>
-    </le-table>
+    </le-Table>
 
     <div class="example-title">插槽表格</div>
-    <le-table 
+    <le-Table 
       :loading="loading"
       :columns="tableHeaderSolt"
       :dataSource="tableDataSolt"
@@ -35,10 +35,10 @@
       <template slot="name_header" >
         <span>自定义插槽表头内容</span>
       </template>
-    </le-table>
+    </le-Table>
 
     <div class="example-title">树状表格</div>
-    <le-table 
+    <le-Table 
       style="height: 100%"
       :loading="loading"
       :columns="tableHeaderTree"
@@ -47,7 +47,7 @@
       row-key="name"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-    </le-table>
+    </le-Table>
 
     <Attribute title='Table Attribute' :dataSource="AttributeFields" />
     <Attribute title='Table Events' :dataSource="EventsFields" />

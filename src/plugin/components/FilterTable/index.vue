@@ -118,7 +118,6 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" >
 .FilterTable{
-    padding: 24px;
     &-table{
         margin-top: 24px;
     }

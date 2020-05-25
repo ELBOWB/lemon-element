@@ -10,6 +10,7 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Layout,
+      redirect: '/table',
       children:[
         {
           path: '/table',

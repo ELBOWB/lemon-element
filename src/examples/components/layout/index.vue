@@ -1,7 +1,7 @@
 <template>
 <div class="page">
   <div class="page-banner">
-    <div class="page-banner-title">Elbow</div>
+    <div class="page-banner-title">Lemon element</div>
   </div>
   <div class="page-container">
     <Sidebar></Sidebar>

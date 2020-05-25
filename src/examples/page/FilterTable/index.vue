@@ -1,5 +1,6 @@
 <template>
   <div class="demo">
+    <div class="example-title">基本搜索框+表格</div>
     <le-FilterTable 
       :filterForm="formInline" 
       :Fields="fields" 
