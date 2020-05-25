@@ -1,7 +1,7 @@
 {
-  "name": "lemon-element-vue",
+  "name": "lemon-element",
   "description": "vue common components base on element",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "author": "ross",
   "main": "lib/lemon.js",
   "license": "MIT",
