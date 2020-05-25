@@ -114,7 +114,7 @@
   import TableColum from './TableColum.vue'
 
   export default {
-    name: 'table',
+    name: 'Table',
     components: {TableColum},
     props: {
       // 表格loading状态
