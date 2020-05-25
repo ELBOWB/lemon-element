@@ -1,9 +1,9 @@
 <template>
   <div class="infodemo">
-    <ross-InfoLayout>
+    <le-InfoLayout>
       <div slot="infoBanner">info</div>
       <div slot="infoContent">content</div>
-    </ross-InfoLayout>
+    </le-InfoLayout>
     <Attribute title='插槽种类' :dataSource="AttributeFields" />
   </div>
 </template>

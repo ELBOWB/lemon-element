@@ -9,13 +9,13 @@ function resolve(dir) {
 module.exports = {
   entry: {
     style: './src/plugin/style.js',
-    ross: './src/plugin/index.js', //出口文件(ross.js)必须与pakage.json中的main相同；
+    lemon: './src/plugin/index.js', //出口文件(lemon.js)必须与pakage.json中的main相同；
   },
   output: {
     path: resolve("lib"),
     publicPath: '/lib/',
     filename: '[name].js',
-    library: 'ross',
+    library: 'lemon',
     libraryTarget: 'umd'
   },
   module: {
@@ -63,6 +63,10 @@ module.exports = {
           limit: 10000,
         }
       },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader'
+      }
     ]
   },
   resolve: {
@@ -87,7 +91,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new ExtractTextPlugin("ross.css", {
+    new ExtractTextPlugin("lemon.css", {
       allChunks: true
     }),
     new webpack.DefinePlugin({

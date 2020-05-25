@@ -2,7 +2,7 @@
   <div class="imgCard">
     <div class="example-title">图片框</div>
     <div class="imgbox">
-      <ross-ImgCard :title="'身份证正面'" :urls="url" />
+      <le-ImgCard :title="'身份证正面'" :urls="url" />
     </div>
     <Attribute title='ImgCard Attribute' :dataSource="AttributeFields" />
   </div>

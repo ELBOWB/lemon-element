@@ -1,6 +1,6 @@
 <template>
   <div class="Tabsbar">
-    <ross-Tabsbar :tabList="tabList" v-model="tabStatus"  @handlerChange="getList" />
+    <le-Tabsbar :tabList="tabList" v-model="tabStatus"  @handlerChange="getList" />
     <Attribute title='Tabsbar Attribute' :dataSource="AttributeFields" />
   </div>
 </template>

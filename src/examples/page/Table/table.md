@@ -1,10 +1,4 @@
 ```
-<ross-table 
-    :loading="loading"
-    :columns="tableHeader"
-    :dataSource="tableData"
-    :info="tableInfo"
-/>
 export default {
   data () {
     return {

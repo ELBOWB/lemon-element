@@ -29,11 +29,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
+        loaders: ["vue-style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.vue$/,
@@ -66,6 +62,10 @@ module.exports = {
           name: ('fonts/app.[hash:7].[ext]')
         }
       },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader'
+      }
     ]
   },
   resolve: {

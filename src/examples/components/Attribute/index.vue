@@ -1,13 +1,13 @@
 <template>
 <div class="attribute">
     <div class="attribute-title">{{title}}</div>
-    <ross-table 
+    <le-table 
     :border="false"
     :columns="tableHeader"
     :dataSource="dataSource"
     :type="{pagination:false,single:false}"
     >
-    </ross-table>
+    </le-table>
 </div>
 </template>
 

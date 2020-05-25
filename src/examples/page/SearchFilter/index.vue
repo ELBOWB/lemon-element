@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <div class="example-title">搜索条件</div>
-    <ross-SearchFilter :Fields="fields" @onChange="onchange" @onReset="onReset" :formData="formInline" />
+    <le-SearchFilter :Fields="fields" @onChange="onchange" @onReset="onReset" :formData="formInline" />
     <Attribute title='searchFilter Attribute' :dataSource="AttributeFields" />
     <Attribute title='searchFilter Events' :dataSource="EventsFields" />
     <Attribute title='Fields 参数配置' :dataSource="FieldsAttribute" />

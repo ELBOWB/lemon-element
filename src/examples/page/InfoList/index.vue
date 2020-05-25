@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <div class="example-title">基本数据</div>
-    <ross-InfoList :data="list" /> 
+    <le-InfoList :data="list" /> 
     <Attribute title='InfoList Attribute' :dataSource="AttributeFields" />
     <Attribute title='Data Attribute' :dataSource="dataFields" />
   </div>

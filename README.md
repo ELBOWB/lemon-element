@@ -1,4 +1,4 @@
-# ross-vue
+# lemon-element-vue
 
 > A ui project for vue
 
@@ -6,16 +6,16 @@
 
 ``` bash
 # install 
-npm install ross-vue --save
+npm install lemon-element-vue --save
 ```
 ```js
 // use in main.js
-import Ross from 'ross-vue'
+import lemon from 'lemon-element-vue'
 
-Vue.use(Ross)
+Vue.use(lemon)
 
 // use in template
-<ross-button />
+<le-button />
 ```
 
 

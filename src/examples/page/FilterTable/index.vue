@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <ross-FilterTable 
+    <le-FilterTable 
       :filterForm="formInline" 
       :Fields="fields" 
       :onchange="onchange" 
@@ -11,7 +11,7 @@
       :tableData="tableData"
       :tableInfo="tableInfo"
     >
-    </ross-FilterTable>
+    </le-FilterTable>
     <Attribute title='InfoList Attribute' :dataSource="AttributeFields" />
   </div>
 </template>

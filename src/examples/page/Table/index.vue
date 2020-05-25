@@ -1,16 +1,16 @@
 <template>
   <div class="demo">
     <div class="example-title">普通表格</div>
-    <ross-table 
+    <le-table 
       :loading="loading"
       :columns="tableHeader"
       :dataSource="tableData"
       :info="tableInfo"
     >
-    </ross-table>
+    </le-table>
     <!-- <TableMd /> -->
     <div class="example-title">带操作的表格</div>
-    <ross-table 
+    <le-table 
       :loading="loading"
       :columns="tableHeader"
       :dataSource="tableData"
@@ -20,10 +20,10 @@
       <template slot="operationColumn" slot-scope="{row}">
         <el-button type='primary' @click="change(row)">点击</el-button>
       </template>
-    </ross-table>
+    </le-table>
 
     <div class="example-title">插槽表格</div>
-    <ross-table 
+    <le-table 
       :loading="loading"
       :columns="tableHeaderSolt"
       :dataSource="tableDataSolt"
@@ -35,10 +35,10 @@
       <template slot="name_header" >
         <span>自定义插槽表头内容</span>
       </template>
-    </ross-table>
+    </le-table>
 
     <div class="example-title">树状表格</div>
-    <ross-table 
+    <le-table 
       style="height: 100%"
       :loading="loading"
       :columns="tableHeaderTree"
@@ -47,7 +47,7 @@
       row-key="name"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-    </ross-table>
+    </le-table>
 
     <Attribute title='Table Attribute' :dataSource="AttributeFields" />
     <Attribute title='Table Events' :dataSource="EventsFields" />
