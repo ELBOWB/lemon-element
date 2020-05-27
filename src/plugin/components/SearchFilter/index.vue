@@ -1,11 +1,10 @@
 <template>
 <div class="SearchFilter">
-    <el-form :gutter="20" :inline="true" :model="formData" ref="searchFilterForm">
+    <el-form :gutter="90" :inline="true" :model="formData" ref="searchFilterForm" label-width="100px">
         <el-form-item :label="item.label" :prop="item.model" :key="index" v-for="(item,index) in Fields">
             <SearchInput
               v-if="item.type === 'Input'"
               :selfStyle="item.style"
-              :width="item.props.props"
               :autosize="item.props.autosize"
               :blur="item.props.blur"
               :clearable="item.props.clearable"
@@ -22,6 +21,28 @@
               :toFixed="item.props.toFixed"
               :type="item.props.type"
             ></SearchInput>
+            <SearchAutocomplete
+              v-if="item.type === 'Autocomplete'"
+              :selfStyle="item.style"
+              :clearable="item.props.clearable"
+              :disabled="item.props.disabled"
+              :model.sync="formData[item.model]"
+              :modelKey="item.model"
+              :placeholder="item.props.placeholder"
+              :debounce="item.props.debounce"
+              :placement="item.props.placement"
+              :popperClass="item.props.popperClass"
+              :selectWhenNnmatched="item.props.selectWhenNnmatched"
+              :prefixIcon="item.props.prefixIcon"
+              :suffixIcon="item.props.suffixIcon"
+              :hideLoading="item.props.hideLoading"
+              :highlightFirstItem="item.props.highlightFirstItem"
+              :slotType="item.props.slotType"
+              :handleSelect="item.props.handleSelect"
+              :triggerOnFocus="item.props.triggerOnFocus"
+              :blur="item.props.blur"
+              :querySearchAsync="item.props.querySearchAsync"
+            ></SearchAutocomplete>
             <SearchDatepicker
               v-if="item.type==='DatePicker'"
               :selfStyle="item.style"
@@ -31,7 +52,7 @@
               :editable="item.props.editable"
               :model.sync="formData[item.model]"
               :pickerOptions="item.props.pickerOptions"
-              :type="item.dateType"
+              :type="item.props.type"
               :valueFormat="item.valueFormat"
               ></SearchDatepicker>
               <!--select下拉框-->
@@ -51,6 +72,7 @@
                 :options="item.props.options"
                 :optionsProps="item.props.optionsProps"
                 :valueKey="item.props.valueKey"
+                :defaultOptions="item.props.defaultOptions"
                 :visibleChange="item.props.visibleChange"
               ></SearchSelect>
               <!--checkbox多选框-->
@@ -80,6 +102,7 @@
                 :model.sync="formData[item.model]"
                 :modelKey="item.model"
                 :options="item.props.options"
+                :defaultOptions="item.props.defaultOptions"
               ></SearchCascader>
         </el-form-item>
         <!-- <el-form-item prop="datetypeData">
@@ -95,6 +118,7 @@
 
 <script>
 import SearchInput from './Input'
+import SearchAutocomplete from './Autocomplete'
 import SearchDatepicker from './Datepicker'
 import SearchSelect from './Select'
 import SearchCheckbox from './Checkbox'
@@ -103,6 +127,7 @@ export default {
   name: 'searchFilter',
   components:{
     SearchInput,
+    SearchAutocomplete,
     SearchDatepicker,
     SearchSelect,
     SearchCheckbox,
@@ -122,8 +147,11 @@ export default {
       this.$emit('onChange',this.$refs.searchFilterForm)
     },
     onReset() {
-      this.$refs.searchFilterForm.resetFields();
+      this.resetFields()
       this.$emit('onReset')
+    },
+    resetFields() {
+      this.$refs.searchFilterForm.resetFields();
     }
   }
 }
@@ -137,6 +165,9 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   .el-form-item{
     margin-bottom: 16px;
+  }
+  .el-form--inline .el-form-item{
+    margin-right: 30px;
   }
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="demo">
     <div class="example-title">搜索条件</div>
-    <le-SearchFilter :Fields="fields" @onChange="onchange" @onReset="onReset" :formData="formInline" />
+    <le-SearchFilter ref="searchfilter" :Fields="fields" @onChange="onchange" @onReset="onReset" :formData="formInline" />
+    <button @click="test">123</button>
     <Attribute title='searchFilter Attribute' :dataSource="AttributeFields" />
     <Attribute title='searchFilter Events' :dataSource="EventsFields" />
     <Attribute title='Fields 参数配置' :dataSource="FieldsAttribute" />
@@ -10,6 +11,7 @@
     <Attribute title='Datepicker props 配置' :dataSource="DatepickerFields" />
     <Attribute title='Checkbox props 配置' :dataSource="CheckboxFields" />
     <Attribute title='Cascader props 配置' :dataSource="CascaderFields" />
+    <Attribute title='Autocomplete props 配置' :dataSource="AutocompleteFields" />
     
   </div>
 </template>
@@ -24,6 +26,7 @@ import DatepickerFields from './Fields/datepickerFields'
 import CheckboxFields from './Fields/checkboxFields'
 import CascaderFields from './Fields/cascaderFields'
 import FieldsAttribute from './Fields/fieldsAttribute'
+import AutocompleteFields from './Fields/autocompleteFields'
 import myfileds from './Fields/fileds.js'
 
 export default {
@@ -34,6 +37,7 @@ export default {
       list: [],
       formInline: {
         user:'',
+        user1:'',
         region: '',
         datetypeData: '',
         box:[],
@@ -48,6 +52,7 @@ export default {
       DatepickerFields:DatepickerFields,
       CheckboxFields:CheckboxFields,
       CascaderFields:CascaderFields,
+      AutocompleteFields
     }
   },
   methods: {
@@ -55,7 +60,12 @@ export default {
       console.log('onchange',ref, this.formInline)
     },
     onReset() {
+      console.log(this.$refs.searchfilter)
       console.log('onReset', this.formInline)
+    },
+    test() {
+      this.$refs.searchfilter.resetFields()
+      console.log(1112233)
     }
   }
 }
@@ -69,5 +79,8 @@ export default {
 }
 .test{
   color: red;
+}
+.el-form-item__label{
+  min-width: 300px;
 }
 </style>

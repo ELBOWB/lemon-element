@@ -30,7 +30,9 @@ export default {
     selfStyle: {
       type: Object,
       default () {
-        return {}
+        return {
+          width: '190x'
+        }
       }
     },
     // 当前绑定值key，可以用于formData中获取到当前组件渲染配置items
@@ -51,6 +53,13 @@ export default {
     options: {
       type: Array,
       require: true
+    },
+     // 默认options
+    defaultOptions: {
+      type: Array,
+      default () {
+        return []
+      }
     },
     // 输入框中是否显示选中值的完整路径
     showAllLevels: {
@@ -106,11 +115,17 @@ export default {
       childModel: this.model
     }
   },
+  computed: {
+    optionsResult(){
+      return this.defaultOptions.concat(this.options)
+    }
+  },
   watch: {
     childModel (val) {
       this.$emit('update:model', val)
     },
     model (val) {
+      console.log(val,'val')
       if (val !== this.childModel) {
         this.childModel = val
       }

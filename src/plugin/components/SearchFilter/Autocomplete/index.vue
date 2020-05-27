@@ -1,44 +1,42 @@
 <template>
   <div>
-    <el-input 
+    <el-autocomplete
+      v-model.trim="childModel"
       :style="selfStyle"
-      :autosize="autosize"
       :clearable="clearable"
       :disabled="disabled"
+      :debounce="debounce"
+      :placement="placement"
+      :popper-class="popperClass"
+      :select-when-unmatched="selectWhenNnmatched"
+      :prefix-icon="prefixIcon"
+      :suffix-icon="suffixIcon"
+      :hide-loading="hideLoading"
+      :highlight-first-item="highlightFirstItem"
+      :fetch-suggestions="querySearchAsync"
       :placeholder="placeholder"
-      :readonly="readonly"
-      :resize="resize"
-      :rows="rows"
-      :tabindex="tabindex"
-      :type="type"
+      :trigger-on-focus="triggerOnFocus"
       @blur="blur(childModel,modelKey)"
-      @keydown.enter.native="keydownEnter($event,$refs.bInput)"
-      ref="bInput"
-      v-model.trim="childModel"
+      @select="handleSelect"
     >
       <slot :slot="slotType" name="inputSlot"></slot>
-    </el-input>
+    </el-autocomplete>
   </div>
 </template>
 
 <script>
 
   export default {
-    name: 'bInput',
+    name: 'autocomplete',
     model: {},
     props: {
-      // 输入框类型text，textarea 和其他 原生 input 的 type 值
-      type: {
-        type: String,
-        default () {
-          return 'text'
-        }
-      },
       // 样式
       selfStyle: {
         type: Object,
         default () {
-          return {}
+          return {
+            width: '190px'
+          }
         }
       },
       // 当前组件绑定值
@@ -67,69 +65,73 @@
           return ''
         }
       },
-      //最小限制值
-      limitMin: {
+      //获取输入建议的去抖延时
+      debounce: {
         type: Number,
         default() {
-          return null;
+          return 300;
         }
       },
-      //最大限制值
-      limitMax: {
-        type: Number,
+      // 菜单弹出位置 include: top / top-start / top-end / bottom / bottom-start / bottom-end
+      placement: {
+        type: String,
         default() {
-          return null;
+          return 'bottom-start';
         }
       },
-      // 保留小数位
-      toFixed: {
-        type: Number,
+      // Autocomplete 下拉列表的类名
+      popperClass: {
+        type: String,
         default () {
-          return 0
+          return ''
         }
       },
-      // 键盘回车事件
-      keydownEnter: {
-        type: Function,
+      // 在输入没有任何匹配建议的情况下，按下回车是否触发 select 事件
+      selectWhenNnmatched: {
+        type: Boolean,
         default () {
+          return false
+        }
+      },
+      // 输入框尾部图标
+      suffixIcon: {
+        type: String,
+        default () {
+          return ''
+        }
+      },
+      // 输入框头部图标
+      prefixIcon: {
+        type: String,
+        default () {
+          return ''
+        }
+      },
+      // 是否隐藏远程加载时的加载图标
+      hideLoading: {
+        type: Boolean,
+        default () {
+          return false
+        }
+      },
+      // 是否默认突出显示远程搜索建议中的第一项
+      highlightFirstItem: {
+        type: Boolean,
+        default () {
+          return false
+        }
+      },
+      // 是否在输入框 focus 时显示建议列表
+      triggerOnFocus: {
+        type: Boolean,
+        default (){
+          return true
         }
       },
       // 失去焦点
       blur: {
         type: Function,
         default () {
-        }
-      },
-      // 当前tab的值 用于tab键控制切换顺序
-      tabindex: {
-        type: String
-      },
-      // 输入框行数，只对 type="textarea" 有效
-      rows: {
-        type: Number,
-        default () {
-          return 2
-        }
-      },
-      // 自适应内容高度，只对 type="textarea" 有效，可传入对象，如，{ minRows: 2, maxRows: 6 }
-      autosize: {
-        type: [Object, Boolean],
-        default () {
-          return {minRows: 4}
-        }
-      },
-      // 控制是否能被用户缩放 none, both, horizontal, vertical
-      resize: {
-        type: String,
-        default () {
-          return 'none'
-        }
-      },
-      // 是否只读
-      readonly: {
-        type: Boolean,
-        default () {
-          return false
         }
       },
       // 当前组件slot插槽类型prefix、suffix、prepend、append
@@ -144,6 +146,18 @@
         type: Boolean,
         default () {
           return false
+        }
+      },
+      // 返回输入建议的方法，仅当你的输入建议数据 resolve 时，通过调用 callback(data:[]) 来返回它
+      querySearchAsync: {
+        type: Function,
+        default () {
+          return ()=>{ }
+        }
+      },
+      handleSelect: {
+        type: Function,
+        default () {
         }
       }
     },

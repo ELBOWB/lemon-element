@@ -24,7 +24,7 @@
         :key="index"
         :label="item[optionsProps.label]"
         :value="item[optionsProps.value]"
-        v-for="(item,index) in options"
+        v-for="(item,index) in optionsResult"
       >
       </el-option>
     </el-select>
@@ -75,6 +75,13 @@ export default {
           label: 'label',
           value: 'value'
         }
+      }
+    },
+    // 默认options
+    defaultOptions: {
+      type: Array,
+      default () {
+        return []
       }
     },
     // 选项为空时显示的文字
@@ -169,6 +176,11 @@ export default {
   data () {
     return {
       childModel: this.model
+    }
+  },
+  computed: {
+    optionsResult(){
+      return this.defaultOptions.concat(this.options)
     }
   },
   watch: {
