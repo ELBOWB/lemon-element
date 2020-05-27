@@ -38,7 +38,9 @@
       selfStyle: {
         type: Object,
         default () {
-          return {}
+          return {
+            minWidth:'220px'
+          }
         }
       },
       // 当前组件绑定值
@@ -159,13 +161,6 @@
       model(val) {
         this.childModel = val;
         this.$emit('update:model', val);
-      }
-    },
-    created () {
-    },
-    methods: {
-      emitModel (val) {
-        this.$emit('update:model', val)
       }
     }
   }

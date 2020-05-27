@@ -35,7 +35,7 @@
         type: Object,
         default () {
           return {
-            width: '190px'
+            minWidth: '220px'
           }
         }
       },

@@ -52,7 +52,9 @@ export default {
     selfStyle: {
       type: Object,
       default () {
-        return {}
+        return {
+          minWidth: '220px'
+        }
       }
     },
     // 输入框默认占位文本
@@ -65,7 +67,9 @@ export default {
     // 下拉选项
     options: {
       type: Array,
-      require: true
+      default () {
+        return []
+      }
     },
     // 当前下拉选项配置 {label:'显示文本值',value:'当前选项绑定值'}
     optionsProps: {
@@ -147,6 +151,10 @@ export default {
         return false
       }
     },
+    // onInitAsync
+    onInitAsync: {
+      type: Function
+    },
     // 远程搜索方法
     remoteMethod: {
       type: Function,
@@ -175,12 +183,20 @@ export default {
   },
   data () {
     return {
-      childModel: this.model
+      childModel: this.model,
+      optionsData: this.options
+    }
+  },
+  async created() {
+    const onInitAsync = this.onInitAsync
+    if (onInitAsync) {
+      const data = await onInitAsync();
+      this.optionsData = data
     }
   },
   computed: {
     optionsResult(){
-      return this.defaultOptions.concat(this.options)
+      return this.defaultOptions.concat(this.optionsData)
     }
   },
   watch: {

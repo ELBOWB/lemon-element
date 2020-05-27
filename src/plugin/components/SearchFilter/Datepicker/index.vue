@@ -36,7 +36,9 @@ export default {
     selfStyle: {
       type: Object,
       default () {
-        return {}
+        return {
+            minWidth:'220px'
+          }
       }
     },
     // 显示类型 year/month/date/dates/ week/datetime/datetimerange/daterange

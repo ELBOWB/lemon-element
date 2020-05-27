@@ -74,6 +74,7 @@
                 :valueKey="item.props.valueKey"
                 :defaultOptions="item.props.defaultOptions"
                 :visibleChange="item.props.visibleChange"
+                :onInitAsync="item.props.onInitAsync"
               ></SearchSelect>
               <!--checkbox多选框-->
               <SearchCheckbox
@@ -102,12 +103,10 @@
                 :model.sync="formData[item.model]"
                 :modelKey="item.model"
                 :options="item.props.options"
+                :onInitAsync="item.props.onInitAsync"
                 :defaultOptions="item.props.defaultOptions"
               ></SearchCascader>
         </el-form-item>
-        <!-- <el-form-item prop="datetypeData">
-          <el-date-picker v-model="formData.datetypeData" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" value-format="yyyy-MM-dd" style="width: 100%;" />
-        </el-form-item> -->
         <el-form-item>
             <el-button type="primary" @click="onSubmit">查询</el-button>
             <el-button @click="onReset">重置</el-button>
@@ -166,8 +165,8 @@ export default {
   .el-form-item{
     margin-bottom: 16px;
   }
-  .el-form--inline .el-form-item{
-    margin-right: 30px;
+  .el-form--inline .el-form-item__content{
+    width: 300px;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <el-cascader
       :style="selfStyle"
       v-model.lazy="childModel"
-      :options="options"
+      :options="optionsResult"
       :placeholder="placeholder"
       :disabled="disabled"
       :clearable="clearable"
@@ -31,7 +31,7 @@ export default {
       type: Object,
       default () {
         return {
-          width: '190x'
+          minWidth:'220px'
         }
       }
     },
@@ -52,7 +52,9 @@ export default {
     // 下拉选项
     options: {
       type: Array,
-      require: true
+      default () {
+        return []
+      }
     },
      // 默认options
     defaultOptions: {
@@ -108,16 +110,28 @@ export default {
       type: Function,
       default () {
       }
+    },
+    // 异步options
+    onInitAsync: {
+      type: Function
     }
   },
   data () {
     return {
-      childModel: this.model
+      childModel: this.model,
+      optionsData: this.options
+    }
+  },
+  async created() {
+    const onInitAsync = this.onInitAsync
+    if (onInitAsync) {
+      const data = await onInitAsync();
+      this.optionsData = data
     }
   },
   computed: {
     optionsResult(){
-      return this.defaultOptions.concat(this.options)
+      return this.defaultOptions.concat(this.optionsData)
     }
   },
   watch: {
